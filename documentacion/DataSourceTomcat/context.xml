@@ -19,4 +19,6 @@
 
 	<!-- Uncomment this to disable session persistence across Tomcat restarts -->
 	<!-- <Manager pathname="" /> -->
+	<ResourceLink type="javax.sql.DataSource" auth="container"
+		global="jdbc/bancoDS" name="refBanco" />
 </Context>

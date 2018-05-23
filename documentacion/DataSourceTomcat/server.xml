@@ -35,6 +35,10 @@
 			factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
 			name="UserDatabase" pathname="conf/tomcat-users.xml"
 			type="org.apache.catalina.UserDatabase" />
+		<Resource auth="Container"
+			driverClassName="com.mysql.cj.jdbc.Driver" name="jdbc/bancoDS"
+			username="fips" password="admin" type="javax.sql.DataSource"
+			url="jdbc:mysql://localhost:3306/banco?autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />
 	</GlobalNamingResources>
 
 	<!-- A "Service" is a collection of one or more "Connectors" that share 
