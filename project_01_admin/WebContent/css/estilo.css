@@ -1,0 +1,87 @@
+ *{
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+header{
+	padding: 30px;
+	text-align: center;
+}
+
+form{
+	display: inline-block;
+	text-align: right;
+}
+
+table{
+  border-collapse: collapse;
+  margin: auto;
+}
+
+table, th, td {
+    border: 1px solid #828282;
+}
+
+th, td{
+	padding: 5px 10px;
+	margin: auto;
+}
+
+.botonMedio, .botonLargo, .botonMuyLargo{
+	color: white;
+	background: #828282;
+	border-radius: 3px;
+	cursor: pointer;
+	padding: 5px;
+	width: 100px;
+}
+.botonLargo{
+	width: 200px;
+}
+.botonMuyLargo{
+	width: 300px;
+}
+	.botonMedio:hover, .botonLargo:hover, .botonMuyLargo:hover{
+		color: black;
+		background: #C9C9C9;
+	}
+
+.dato{
+	border: 1px solid #828282;
+	padding: 3px;
+	width: 200px;
+}
+
+.formBot{
+	text-align: center;
+}
+
+.footer{
+	background: #F5F5F5;
+	padding: 15px;
+	text-align: center;
+}
+
+.header{
+	padding: 30px;
+	text-align: center;
+}
+
+.main{
+	margin: auto;
+	text-align: center;
+	width: 90%;
+	padding: 15px;
+}
+
+.opciones{
+	margin: auto;
+	text-align: center;
+}
+
+.comboBox{
+	border: 1px solid #828282;
+	padding: 3px;
+}
+

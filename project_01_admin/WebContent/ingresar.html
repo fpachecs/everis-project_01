@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ingresar</title>
+<link rel="stylesheet" type="text/css" href="css\estilo.css"/>
+</head>
+<body>
+	<header>
+		<h1>Ingresar en cuenta</h1>
+	</header>
+	<div class="main">
+		<p>Introduzca cantidad a ingresar en su cuenta:</p>	
+		<br/>
+		<form action="Controller?_op=doIngresa" method="post">
+			<span>Cantidad:</span>
+			<input class="dato" type="number" name="_cantidad"/>
+			<br/><br/>
+			<div class="formBot">
+				<input class="botonMedio" type="submit" value="Ingresar"/>
+			</div>
+		</form>
+		<br/><br/>
+		<input class="botonMedio" type="submit" value="Volver" 
+			onClick="window.location.href='Controller?_op=toOperaciones'"/>
+	</div>
+</body>
+</html>
