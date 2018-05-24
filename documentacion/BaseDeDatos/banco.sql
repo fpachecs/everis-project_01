@@ -60,7 +60,7 @@ create table Movimiento(
 
 insert into Usuario values
 (1, "Fernando", "Pacheco", "55526889S"),
-(2, "David", "Eclaroba", "00000000A"),
+(2, "David", "Claro", "00000000A"),
 (3, "Antonio", "Carrión", "00000000B");
 
 insert into UsuarioLogin values
