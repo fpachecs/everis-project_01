@@ -1,6 +1,6 @@
 package com.everisboot.controller;
 
-import java.util.Optional;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -73,10 +73,12 @@ public class Controler {
 	
 	@RequestMapping(value = "/listadodecuenta", method = RequestMethod.GET)
 	public ModelAndView listadodecuenta(HttpServletRequest request) {		
-		int cuentaId = Integer.parseInt(request.getParameter("idcuenta"));		
-		Optional<Cuenta> listCuentasUsuario = cuentaService.getCuenta(cuentaId);		
+		int usuarioId = Integer.parseInt(request.getParameter("idUsuario"));
+		System.out.println(usuarioId);
+		//Usuario usuario = usuarioService.getUsuario(usuarioId);
+		List<Cuenta> cuenta = cuentaService.getCuentaByUser(usuarioId);		
 		ModelAndView model = new ModelAndView("cuentas");
-		model.addObject("cuentasUsuario", listCuentasUsuario);
+		model.addObject("cuentasUsuario", cuenta);
 		return model;
 	}
 

@@ -1,8 +1,10 @@
 package com.everisboot.models;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,18 +19,24 @@ public class Cuenta implements Serializable {
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Id
+	@Column(name="id")
 	public int id;
+	@Column(name="iduser")
 	public int idUser;
-	public int numCuenta;
+	@Column(name="numcuenta")
+	public String numCuenta;
+	@Column(name="nombanco")
 	public String nomBanco;
+	@Column(name="saldo")
 	public double saldo;
-	public Date fechaDeAlta;
+	@Column(name="fechadealta")
+	public LocalDateTime fechaDeAlta;
 	
 	public Cuenta() {
 		super();
 	}
 
-	public Cuenta(int id, int idUser, int numCuenta, String nomBanco, double saldo, Date fechaDeAlta) {
+	public Cuenta(int id, int idUser, String numCuenta, String nomBanco, double saldo, LocalDateTime fechaDeAlta) {
 		super();
 		this.id = id;
 		this.idUser = idUser;
@@ -54,11 +62,11 @@ public class Cuenta implements Serializable {
 		this.idUser = idUser;
 	}
 
-	public int getNumCuenta() {
+	public String getNumCuenta() {
 		return numCuenta;
 	}
 
-	public void setNumCuenta(int numCuenta) {
+	public void setNumCuenta(String numCuenta) {
 		this.numCuenta = numCuenta;
 	}
 
@@ -78,11 +86,11 @@ public class Cuenta implements Serializable {
 		this.saldo = saldo;
 	}
 
-	public Date getFechaDeAlta() {
+	public LocalDateTime getFechaDeAlta() {
 		return fechaDeAlta;
 	}
 
-	public void setFechaDeAlta(Date fechaDeAlta) {
+	public void setFechaDeAlta(LocalDateTime fechaDeAlta) {
 		this.fechaDeAlta = fechaDeAlta;
 	}
 

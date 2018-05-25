@@ -1,6 +1,6 @@
 package com.everisboot.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,13 +18,13 @@ public class UsuarioLogin {
 	public String user;
 	public String pass;
 	public int idUser;
-	public Date ultimoAcceso;
+	public LocalDateTime ultimoAcceso;
 	
 	public UsuarioLogin() {
 		super();
 	}
 
-	public UsuarioLogin(int id, String user, String pass, int idUser, Date ultimoAcceso) {
+	public UsuarioLogin(int id, String user, String pass, int idUser, LocalDateTime ultimoAcceso) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -65,11 +65,11 @@ public class UsuarioLogin {
 		this.idUser = idUser;
 	}
 
-	public Date getUltimoAcceso() {
+	public LocalDateTime getUltimoAcceso() {
 		return ultimoAcceso;
 	}
 
-	public void setUltimoAcceso(Date ultimoAcceso) {
+	public void setUltimoAcceso(LocalDateTime ultimoAcceso) {
 		this.ultimoAcceso = ultimoAcceso;
 	}
 

@@ -15,13 +15,13 @@ public class Usuario {
 	public int id;
 	public String nombre;
 	public String apellido;
-	public int dni;
+	public String dni;
 	
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(int id, String nombre, String apellido, int dni) {
+	public Usuario(int id, String nombre, String apellido, String dni) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -53,11 +53,11 @@ public class Usuario {
 		this.apellido = apellido;
 	}
 
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
 
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 

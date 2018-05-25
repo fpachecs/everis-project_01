@@ -1,7 +1,7 @@
 package com.everisboot.models;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,15 +18,15 @@ public class Movimiento implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	public int id;
 	public int idCuenta;
-	public Date fechaOperacion;
-	public int cantidad;
+	public LocalDateTime fechaOperacion;
+	public double cantidad;
 	public String tipoOperacion;
 	
 	public Movimiento() {
 		super();
 	}
 
-	public Movimiento(int id, int idCuenta, Date fechaOperacion, int cantidad, String tipoOperacion) {
+	public Movimiento(int id, int idCuenta, LocalDateTime fechaOperacion, double cantidad, String tipoOperacion) {
 		super();
 		this.id = id;
 		this.idCuenta = idCuenta;
@@ -51,19 +51,19 @@ public class Movimiento implements Serializable {
 		this.idCuenta = idCuenta;
 	}
 
-	public Date getFechaOperacion() {
+	public LocalDateTime getFechaOperacion() {
 		return fechaOperacion;
 	}
 
-	public void setFechaOperacion(Date fechaOperacion) {
+	public void setFechaOperacion(LocalDateTime fechaOperacion) {
 		this.fechaOperacion = fechaOperacion;
 	}
 
-	public int getCantidad() {
+	public double getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(int cantidad) {
+	public void setCantidad(double cantidad) {
 		this.cantidad = cantidad;
 	}
 

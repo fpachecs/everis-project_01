@@ -21,12 +21,9 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="cuentasUsuario : ${listCuentasUsuario}">
-
-										<td><input style="border: 0;" type="text"
-											th:name="${cuentasUsuario.numerocuenta}">
-										</td>
-										<td th:text="${cuentasUsuario.nombrecliente}"></td>
+									<tr th:each="cuentasUsuario : ${cuentasUsuario}">
+										<td th:text="${cuentasUsuario.numCuenta}"></td>
+										<td th:text="${cuentasUsuario.nomBanco}"></td>
 										<td th:text="${cuentasUsuario.saldo}"></td>					
 									</tr>
 

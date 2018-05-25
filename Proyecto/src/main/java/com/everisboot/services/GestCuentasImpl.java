@@ -1,6 +1,8 @@
 package com.everisboot.services;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,9 +40,23 @@ class GestCuentasImpl implements GestCuentas{
 		implCuenta.save(cuent);
 
 	}
+	@Override
+	public Cuenta getCuenta(int idCuenta){
+		Cuenta result=null;
+		if(implCuenta.findById(idCuenta).isPresent()) {
+			result=implCuenta.findById(idCuenta).get();
+		}				
+		return result;
+	}
 	
-	public Optional<Cuenta> getCuenta(int Id){		
-		return implCuenta.findById(Id);
+	public List<Cuenta> getCuentaByUser(int idUser) {
+		List<Cuenta> lista = new ArrayList<>();
+		Iterable<Cuenta> todas = listCuentas();
+		for (Cuenta cuenta : todas) {
+			lista.add(cuenta);
+		}
+		lista=lista.stream().filter(c -> c.getIdUser()==idUser).collect(Collectors.toList());
+		return lista;
 	}
 	
 		
