@@ -1,0 +1,83 @@
+package com.everisboot.controller;
+
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.everisboot.models.Cuenta;
+import com.everisboot.models.Movimiento;
+import com.everisboot.models.Usuario;
+import com.everisboot.models.UsuarioLogin;
+import com.everisboot.services.GestCuentas;
+import com.everisboot.services.GestMovimientos;
+import com.everisboot.services.GestUsuario;
+import com.everisboot.services.GestUsuarioLogin;
+
+
+@Controller
+public class Controler {
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+	@Autowired
+	private GestCuentas cuentaService;
+	@Autowired
+	private GestUsuarioLogin loginService;
+	@Autowired
+	private GestMovimientos movimientosService;
+	@Autowired
+	private GestUsuario usuarioService;
+	
+	@RequestMapping("/")
+	public ModelAndView handleRequest() throws Exception {		
+		Iterable<Cuenta> listCuentas = cuentaService.listCuentas();
+		Iterable<Movimiento> listMovimientos = movimientosService.listMovimiento();
+		Iterable<UsuarioLogin> listUsuarioLogin= loginService.listLogin();		
+		Iterable<Usuario> listUsuario= usuarioService.listUsuario();	
+		
+		ModelAndView model = new ModelAndView("index");
+		
+		model.addObject("cuenta", new Cuenta());
+		model.addObject("movimiento", new Movimiento());
+		model.addObject("usuariologin",new UsuarioLogin());
+		model.addObject("usuario",new Usuario());
+		
+		model.addObject("cuentasList", listCuentas);
+		model.addObject("movimientosList", listMovimientos);
+		model.addObject("usuarioLoginList", listUsuarioLogin);
+		model.addObject("usuarioList", listUsuario);
+		return model;
+	}	
+	
+	@RequestMapping(value = "/listado")
+	public ModelAndView listado(HttpServletRequest request) {			
+		Iterable<Cuenta> listCuentas = cuentaService.listCuentas();		
+		ModelAndView model = new ModelAndView("movimientos");
+		model.addObject("cuentasList", listCuentas);
+		return model;
+	}
+	
+	@RequestMapping(value= "/login" , method = RequestMethod.POST)
+	public ModelAndView login(String user,String password) {		
+		loginService.devuelveId(user, password);			
+		ModelAndView model = new ModelAndView("principal");		
+		return model;
+	}
+	
+	@RequestMapping(value = "/listadodecuenta", method = RequestMethod.GET)
+	public ModelAndView listadodecuenta(HttpServletRequest request) {		
+		int cuentaId = Integer.parseInt(request.getParameter("idcuenta"));		
+		Optional<Cuenta> listCuentasUsuario = cuentaService.getCuenta(cuentaId);		
+		ModelAndView model = new ModelAndView("cuentas");
+		model.addObject("cuentasUsuario", listCuentasUsuario);
+		return model;
+	}
+
+}

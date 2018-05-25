@@ -1,0 +1,9 @@
+.btn-secondary:hover{
+	background-color:GAINSBORO;
+	border-color:GAINSBORO;
+	color:black;
+}
+.form-control:focus{
+	box-shadow: 0 0 0 0.2rem grey;
+	border-color:grey;
+}
