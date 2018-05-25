@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Principal</title>
+<title>Operaciones</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
@@ -32,17 +32,34 @@
 			</ul>
 		</nav>
 	</header>
-	<div class="container" style="text-align:center;">
-	<div class="row">
-		<div class="col-lg-6">
-			<a href="Controller?op=operacionescarga"><img class="rounded-circle" src="img/movimientos.jpg" width="140" height="140"></a>
-			<h2>Operaciones</h2>
-		</div>			
-		<div class="col-lg-6">
-			<a href="#"><img class="rounded-circle" src="img/movimientos.jpg" width="140" height="140"></a>
-			<h2>Movimientos</h2>
-		</div>
-	</div>
-	</div>
+	<form action="Controller?op=operaciones" method="post">
+		<div class="container" style="text-align:center;">
+		<div class="form-group row">
+				<div class="col-sm-5">
+				</div>
+				<select name="" class="form-control">
+				    <option value="Selecciona" selected>Selecciona la cuenta</option>
+				    <c:forEach items="${cuentas}" var="cuenta">
+				        <option value="${cuenta.numCuenta}">${cuenta.numCuenta}</option>
+				    </c:forEach>
+				</select>
+				<div class="col-sm-5">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-5">
+				</div>
+				<div class="col-sm-2">
+					<input type="text" class="form-control"	id="importe" placeholder="Importe" name="importe">
+				</div>
+				<div class="col-sm-5">
+				</div>
+			</div>
+			<div class="btn-group-vertical">
+	  			<button class="btn btn-lg btn-succes btn-block" type="submit" name="opc" value="Ingresar">Ingresar</button>
+				<button class="btn btn-lg btn-danger btn-block" type="submit" name="opc" value="Extraer">Extraer</button>
+			</div>	
+		</div>		
+	</form>
 </body>
 </html>

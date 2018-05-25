@@ -21,8 +21,11 @@ public class Controller extends HttpServlet {
 			case "login":
 				url = "LoginService";
 				break;
-			case "ingresar":
-				url = "IngresarService" ;
+			case "operaciones":
+				url = "OperacionesService" ;
+				break;
+			case "operacionescarga":
+				url = "OperacionesCargaService" ;
 				break;
 			default:
 				break;
