@@ -12,4 +12,7 @@ public class LibFactory {
 	public static CuentasDaoImp getCuentasDaoImp() {
 		return new CuentasDaoImp();
 	}
+	public static UsuarioDaoImp getUsuarioDaoImp() {
+		return new UsuarioDaoImp();
+	}
 }

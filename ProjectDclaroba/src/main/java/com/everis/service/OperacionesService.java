@@ -23,12 +23,13 @@ public class OperacionesService extends HttpServlet{
 		CuentasDao cntd = LibFactory.getCuentasDaoImp();
 		MovimientosDao movd = LibFactory.getMovimientosDaoImp();
 		HttpSession session = request.getSession();
-		Cuenta ctn = cntd.obtenerCuenta((int)session.getAttribute("iduser"));
+		Cuenta ctn = cntd.obtenerCuenta((int)session.getAttribute("iduser"), session.getAttribute("numCuenta").toString());
 		if (operacion.equals("Ingresar")) {			
 			movd.ingresar(Integer.parseInt(request.getParameter("importe")), ctn.getId());
 		}else if (operacion.equals("Extraer")) {
 			movd.extraer(Integer.parseInt(request.getParameter("importe")), ctn.getId());
 		}
-		request.getRequestDispatcher("principal.jsp").forward(request, response);
+		request.setAttribute("cuenta", session.getAttribute("cuenta"));
+		request.getRequestDispatcher("cuenta.jsp").forward(request, response);
 	}
 }

@@ -24,7 +24,7 @@ public class Controller extends HttpServlet {
 			case "operaciones":
 				url = "OperacionesService" ;
 				break;
-			case "operacionescarga":
+			case "operacionesCarga":
 				url = "OperacionesCargaService" ;
 				break;
 			default:

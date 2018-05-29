@@ -21,8 +21,10 @@ public class OperacionesCargaService extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		CuentasDao cntd = LibFactory.getCuentasDaoImp();
 		HttpSession session = request.getSession();
-		List<Cuenta> cuentas = cntd.obtenerCuentasUsuario((int)session.getAttribute("iduser"));
-		request.setAttribute("cuentas", cuentas);		
-		request.getRequestDispatcher("operacion.jsp").forward(request, response);
+		Cuenta cuenta = cntd.obtenerCuenta((int)session.getAttribute("iduser"),request.getParameter("numCuenta").toString());
+		request.setAttribute("cuenta", cuenta);
+		session.setAttribute("cuenta", cuenta);
+		session.setAttribute("numCuenta", cuenta.getNumCuenta());
+		request.getRequestDispatcher("cuenta.jsp").forward(request, response);
 	}
 }

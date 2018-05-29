@@ -30,8 +30,8 @@ public class CuentasDaoImp implements CuentasDao{
 	}
 
 	@Override
-	public Cuenta obtenerCuenta(int iduser) {
-		String sql = "SELECT * FROM cuenta WHERE idUser = " + iduser;
+	public Cuenta obtenerCuenta(int iduser, String numCuenta) {
+		String sql = "SELECT * FROM cuenta WHERE idUser = " + iduser + " AND numCuenta = '" + numCuenta + "'";
 		try (Connection cn = ds.getConnection();) {
 			PreparedStatement ps = cn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
