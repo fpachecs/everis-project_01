@@ -2,6 +2,7 @@ package com.everisboot.models;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,10 +15,15 @@ import javax.persistence.Table;
 public class UsuarioLogin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Column(name="id")
 	public int id;
+	@Column(name="user")
 	public String user;
+	@Column(name="pass")
 	public String pass;
+	@Column(name="iduser")
 	public int idUser;
+	@Column(name="ultimoacceso")
 	public LocalDateTime ultimoAcceso;
 	
 	public UsuarioLogin() {

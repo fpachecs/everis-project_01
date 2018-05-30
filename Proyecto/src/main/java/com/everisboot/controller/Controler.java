@@ -4,14 +4,15 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.everisboot.exception.ExceptionApp;
 import com.everisboot.models.Cuenta;
 import com.everisboot.models.Movimiento;
 import com.everisboot.models.Usuario;
@@ -24,7 +25,7 @@ import com.everisboot.services.GestUsuarioLogin;
 
 @Controller
 public class Controler {
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	//private final Logger log = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private GestCuentas cuentaService;
@@ -65,8 +66,18 @@ public class Controler {
 	}
 	
 	@RequestMapping(value= "/login" , method = RequestMethod.POST)
-	public ModelAndView login(String user,String password) {		
-		loginService.devuelveId(user, password);			
+	public ModelAndView login(HttpServletRequest request) {
+		String user=request.getParameter("inputEmail");
+		String pass=request.getParameter("inputPassword");
+		@SuppressWarnings("unused")
+		UsuarioLogin usuario = null;
+		try {
+			usuario = loginService.login(user, pass);
+		} catch (ExceptionApp e) {
+			ModelAndView model=new ModelAndView("index");
+			model.addObject("frase", e.getMsg());
+			e.printStackTrace();
+		}
 		ModelAndView model = new ModelAndView("principal");		
 		return model;
 	}
@@ -74,12 +85,11 @@ public class Controler {
 	@RequestMapping(value = "/listadodecuenta", method = RequestMethod.GET)
 	public ModelAndView listadodecuenta(HttpServletRequest request) {		
 		int usuarioId = Integer.parseInt(request.getParameter("idUsuario"));
-		System.out.println(usuarioId);
-		//Usuario usuario = usuarioService.getUsuario(usuarioId);
+		System.out.println(usuarioId);		
 		List<Cuenta> cuenta = cuentaService.getCuentaByUser(usuarioId);		
 		ModelAndView model = new ModelAndView("cuentas");
 		model.addObject("cuentasUsuario", cuenta);
 		return model;
-	}
+	}	
 
 }

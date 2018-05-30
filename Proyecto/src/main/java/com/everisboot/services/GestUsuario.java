@@ -1,8 +1,6 @@
 package com.everisboot.services;
 
-import java.util.Optional;
 
-import com.everisboot.models.Cuenta;
 import com.everisboot.models.Usuario;
 
 public interface GestUsuario {	

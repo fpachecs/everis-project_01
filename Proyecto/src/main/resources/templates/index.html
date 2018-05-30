@@ -7,17 +7,25 @@
 <link rel="stylesheet" type="text/css" href="/css/estilo.css"/>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+	var frase = "${frase}";
+	if (frase != "") {
+		$('#dialog').dialog();
+		$('body')
+	}	
+});
+</script>
 <link rel="stylesheet" type="text/css" href="/css/theme.css">
 <link rel="shortcut icon" href="/img/bank.ico" />
 </head>
 <body>
-<a th:href="@{listadodecuenta(idUsuario=${1})}">Ir</a>
-
-
-	<form class="form-signin" th:action="@{/agregarcontacto}">
+	<form class="form-signin" th:action="@{login}" method="post">
 		<img src="/img/Inversis.png" class="img-fluid" >
 		<div class="form-label-group">
-			<input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus name="inputEmail"> 
+			<input type="text" id="inputEmail" class="form-control" placeholder="Email" required autofocus name="inputEmail"> 
 			<label for="inputEmail" >Email</label>		
 		</div>
 		<div class="form-label-group">
@@ -26,23 +34,8 @@
 		</div>
 		<button class="btn btn-lg btn-secondary btn-block" type="submit">Login</button>		
 	</form>
+	<div id="dialog" title="Frase">
+	  <p>${frase}</p>
+	</div>
 </body>
 </html>
-
-
-
-<!-- <header>
-		<h1>Acceso a Cuenta</h1>
-	</header>
-	<div class="main">
-		<p>Introduzca su número de cuenta:</p>	
-		<br/>
-		<form action="Controller?_op=doLogin" method="post">
-			<span>Numero de cuenta:</span>
-			<input class="dato" type="text" name="_numCuenta"/>
-			<br/><br/>
-			<div class="formBot">
-				<input class="botonMedio" type="submit" value="Entrar"/>
-			</div>
-		</form>
-	</div> -->
