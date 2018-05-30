@@ -93,17 +93,17 @@ class GestUsuarioLoginImpl implements GestUsuarioLogin{
 		}
 		
 		try {
-			UsuarioLogin usuarioLogin = lista.stream().filter(ul -> ul.getUser().equals(user) && ul.getPass().equals(pass)).findFirst().orElse(null);
+			UsuarioLogin usuarioLogin = lista.stream().filter(ul -> ul.getUser().equals(user)).findFirst().orElse(null);
 			// Validar user
-			if (validateUser(usuarioLogin, user)) {
+			if (usuarioLogin != null && validateUser(usuarioLogin, user)) {
 				// Validar password
 				if  (usuarioLogin.getPass().equals(pass)) {
 					result = usuarioLogin;
 				} else {
-					throw new ExceptionApp("Usuario sin acceso","El usuario no se encuentra en nuestra base de datos.");
+					throw new ExceptionApp("Credenciales incorrectas","La contraseña es incorrecta.");
 				}
 			} else {
-				throw new ExceptionApp("Credenciales incorrectas","La contraseña es incorrecta.");
+				throw new ExceptionApp("Usuario sin acceso","El usuario no se encuentra en nuestra base de datos.");
 			}
 		return result;
 			

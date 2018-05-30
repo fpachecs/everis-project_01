@@ -1,5 +1,6 @@
 package com.everisboot.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.everisboot.exception.ExceptionApp;
@@ -16,5 +17,4 @@ public interface GestUsuarioLogin {
 	public boolean existeUsuario(String user);
 	public boolean contraseñaCorrecta(String pass);
 	public UsuarioLogin login(String user, String pass) throws ExceptionApp;
-
 }

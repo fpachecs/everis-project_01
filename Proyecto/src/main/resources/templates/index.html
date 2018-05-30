@@ -3,21 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/css/estilo.css"/>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
-<script>
-$(document).ready(function() {
-	var frase = "${frase}";
-	if (frase != "") {
-		$('#dialog').dialog();
-		$('body')
-	}	
-});
-</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/theme.css">
 <link rel="shortcut icon" href="/img/bank.ico" />
 </head>
@@ -32,10 +23,22 @@ $(document).ready(function() {
 			<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required autofocus name="inputPassword">
 			<label for="inputPassword">Contraseña</label> 		
 		</div>
-		<button class="btn btn-lg btn-secondary btn-block" type="submit">Login</button>		
+		<button class="btn btn-lg btn-secondary btn-block" type="submit" data-toggle="modal" data-target="#miModal">Login</button>		
 	</form>
-	<div id="dialog" title="Frase">
-	  <p>${frase}</p>
-	</div>
+<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel" th:text=${titulo}></h4>
+      </div>
+      <div class="modal-body">
+        <p th:text=${descripcion}></p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

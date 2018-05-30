@@ -1,5 +1,6 @@
 package com.everisboot.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -75,8 +76,10 @@ public class Controler {
 			usuario = loginService.login(user, pass);
 		} catch (ExceptionApp e) {
 			ModelAndView model=new ModelAndView("index");
-			model.addObject("frase", e.getMsg());
-			e.printStackTrace();
+			model.addObject("descripcion", e.getMsg());
+			model.addObject("titulo", e.getTitulo());
+			System.out.println(e.getMsg());
+			return model;
 		}
 		ModelAndView model = new ModelAndView("principal");		
 		return model;
