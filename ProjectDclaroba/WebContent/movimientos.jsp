@@ -90,6 +90,25 @@
 				
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-lg-3">
+				
+			</div>
+			<div class="col-lg-6">
+				<nav aria-label="Page">
+				  <ul class="pagination">
+				  	<li class="page-item"><a class="page-link" href="Controller?op=movimientos&opcion=primera&paginaActual=${paginaActual}"><<</a></li>
+				  	<li class="page-item"><a class="page-link" href="Controller?op=movimientos&opcion=anterior&paginaActual=${paginaActual}"><</a></li>
+			    	<li class="page-item"><a class="page-link" href="#">${paginaActual}</a></li>
+				    <li class="page-item"><a class="page-link" href="Controller?op=movimientos&opcion=siguiente&paginaActual=${paginaActual}">></a></li>
+				    <li class="page-item"><a class="page-link" href="Controller?op=movimientos&opcion=ultima&paginaActual=${paginaActual}">>></a></li>
+				  </ul>
+				</nav>
+			</div>
+			<div class="col-lg-3">
+				
+			</div>
+		</div>
 	</div>
 </body>
 </html>
