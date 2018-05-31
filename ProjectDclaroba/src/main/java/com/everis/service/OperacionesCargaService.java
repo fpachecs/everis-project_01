@@ -25,6 +25,7 @@ public class OperacionesCargaService extends HttpServlet{
 		request.setAttribute("cuenta", cuenta);
 		session.setAttribute("cuenta", cuenta);
 		session.setAttribute("numCuenta", cuenta.getNumCuenta());
+		session.setAttribute("idCuenta", cuenta.getId());
 		request.getRequestDispatcher("cuenta.jsp").forward(request, response);
 	}
 }

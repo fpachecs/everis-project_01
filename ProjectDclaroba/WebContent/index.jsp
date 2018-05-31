@@ -14,8 +14,10 @@
 $(document).ready(function() {
 	var frase = "${frase}";
 	if (frase != "") {
-		$('#dialog').dialog();
-	}	
+		$('#dialog').dialog({close: function() {$('#formulario').css("opacity","1");}});
+		$('#formulario').css("opacity","0.3");
+	}
+	
 });
 </script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -27,11 +29,11 @@ $(document).ready(function() {
 </head>
 <body>
 
-	<form class="form-signin" name="formLogin" action="Controller?op=login" method="post">
+	<form id="formulario" class="form-signin" name="formLogin" action="Controller?op=login" method="post">
 		<img src="img/Inversis.png" class="img-fluid" >
 		<div class="form-label-group">
-			<input type="text" id="inputEmail" class="form-control" placeholder="Email" required autofocus name="user"> 
-			<label for="inputEmail" >Email</label>		
+			<input type="text" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus name="user"> 
+			<label for="inputEmail" >Usuario</label>		
 		</div>
 		<div class="form-label-group">
 			<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required autofocus name="contrasena">
@@ -39,7 +41,7 @@ $(document).ready(function() {
 		</div>
 		<button class="btn btn-lg btn-secondary btn-block" type="submit">Login</button>		
 	</form>
-	<div id="dialog" title="Frase">
+	<div id="dialog" title="Error en el Login">
 	  <p>${frase}</p>
 	</div>
 </body>

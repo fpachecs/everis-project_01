@@ -8,4 +8,5 @@ public interface CuentasDao {
 
 	public Cuenta obtenerCuenta(int iduser, String numCuenta);
 	public List<Cuenta> obtenerCuentasUsuario(int iduser);
+	public void actualizarSaldo(int cantidad, int idCuenta);
 }

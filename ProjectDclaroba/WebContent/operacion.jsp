@@ -34,7 +34,34 @@
 		</nav>
 	</header>
 	<form action="Controller?op=operaciones" method="post">
-		<div class="container" style="text-align:center;">		
+		<div class="container" style="text-align:center;">
+			<div class="row">
+				<div class="col-lg-3">
+					
+				</div>	
+				<div class="col-lg-6">
+					<h2>Banco ${cuenta.nomBanco}</h2>
+					<div class="card">
+					  	<div class="card-body">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon3">Cuenta</span>
+								</div>
+								<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" value="${cuenta.numCuenta}">
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon3">Saldo</span>
+								</div>
+								<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" value="${cuenta.saldo}">
+							</div>
+						</div>
+					</div>
+				</div>		
+				<div class="col-lg-3">
+					
+				</div>
+			</div>		
 			<div class="form-group row">
 				<div class="col-sm-5">
 				</div>

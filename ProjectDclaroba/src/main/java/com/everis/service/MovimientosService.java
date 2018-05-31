@@ -1,6 +1,9 @@
 package com.everis.service;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,25 +15,21 @@ import javax.servlet.http.HttpSession;
 import com.everis.DAO.CuentasDao;
 import com.everis.DAO.LibFactory;
 import com.everis.DAO.MovimientosDao;
-import com.everis.models.Cuenta;
+import com.everis.models.Movimiento;
 
 @SuppressWarnings("serial")
-@WebServlet("/OperacionesService")
-public class OperacionesService extends HttpServlet{
+@WebServlet("/MovimientosService")
+public class MovimientosService extends HttpServlet{
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException { 
-		String operacion = request.getParameter("opc");
+		HttpSession session = request.getSession();
 		CuentasDao cntd = LibFactory.getCuentasDaoImp();
 		MovimientosDao movd = LibFactory.getMovimientosDaoImp();
-		HttpSession session = request.getSession();
-		Cuenta ctn = cntd.obtenerCuenta((int)session.getAttribute("iduser"), session.getAttribute("numCuenta").toString());
-		if (operacion.equals("Ingresar")) {			
-			movd.ingresar(Integer.parseInt(request.getParameter("importe")), ctn.getId());
-		}else if (operacion.equals("Extraer")) {
-			movd.extraer(Integer.parseInt(request.getParameter("importe")), ctn.getId());
-		}
-		cntd.actualizarSaldo(Integer.parseInt(request.getParameter("importe")), ctn.getId());
+		List<Movimiento> movimientos = movd.obtenerMovimientosCuenta((int)session.getAttribute("idCuenta"));
+		request.setAttribute("movimientos", movimientos);
 		request.setAttribute("cuenta", cntd.obtenerCuenta((int)session.getAttribute("iduser"), session.getAttribute("numCuenta").toString()));
-		request.getRequestDispatcher("operacion.jsp").forward(request, response);
+		request.setAttribute("fecha", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		request.setAttribute("hora", DateTimeFormatter.ofPattern("HH:mm"));
+		request.getRequestDispatcher("movimientos.jsp").forward(request, response);
 	}
 }

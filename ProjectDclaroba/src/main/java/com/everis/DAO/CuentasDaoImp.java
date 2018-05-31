@@ -1,5 +1,6 @@
 package com.everis.DAO;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -65,5 +66,31 @@ public class CuentasDaoImp implements CuentasDao{
 			ex.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public void actualizarSaldo(int cantidad, int idCuenta) {
+		BigDecimal saldo = null;
+		String sql = "SELECT saldo FROM cuenta WHERE id = " + idCuenta;
+		try (Connection cn = ds.getConnection();) {
+			PreparedStatement ps = cn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+			saldo = rs.getBigDecimal("saldo");
+								
+			}		
+		}catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		BigDecimal suma = saldo.add(BigDecimal.valueOf(cantidad)) ;
+		String sql2 = "UPDATE cuenta SET saldo = " + suma + " WHERE id = " + idCuenta;
+		try(Connection cn = ds.getConnection();) {
+			PreparedStatement ps = cn.prepareStatement(sql2);
+			ps.executeUpdate();
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		
 	}
 }

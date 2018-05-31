@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-<title>Cuenta Individual</title>
+<title>Movimientos</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
@@ -36,33 +36,60 @@
 		</nav>
 	</header>
 	<div class="container" style="text-align:center;">
-	<div class="row">
-		<div class="col-lg-3">
-			
-		</div>	
-		<div class="col-lg-6">
-			<h2>Banco ${cuenta.nomBanco}</h2>
-			<div class="card">
-			  	<div class="card-body">
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon3">Cuenta</span>
-						</div>
-						<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" value="${cuenta.numCuenta}">
-					</div>
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon3">Saldo</span>
-						</div>
-						<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" value="${cuenta.saldo}">
+		<div class="row">
+			<div class="col-lg-3">
+				
+			</div>	
+			<div class="col-lg-6">
+				<div class="card">
+				  	<div class="card-body">
+						<div class="input-group mb-3">							
+								<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" value="${cuenta.numCuenta}">
+							<div class="input-group-prepend">
+								<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" value="${cuenta.saldo}">
+							</div>
+						</div>					
 					</div>
 				</div>
+			</div>		
+			<div class="col-lg-3">
+				
 			</div>
-		</div>		
-		<div class="col-lg-3">
-			
 		</div>
-	</div>
+		<div class="row">
+			<div class="col-lg-3">
+				
+			</div>	
+			<div class="col-lg-6">
+				<div class="card">
+				  	<div class="card-body">
+						<table class="table table-sm table-info table-hover">
+						  <thead>
+						    <tr>
+						      <th scope="col">Fecha</th>
+						      <th scope="col">Hora</th>
+						      <th scope="col">Cantidad</th>
+						      <th scope="col">Operacion</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						  	<c:forEach var="movimiento" items="${movimientos}">
+							    <tr>
+							      <td>${fecha.format(movimiento.fechaOperacion)}</td>
+							      <td>${hora.format(movimiento.fechaOperacion)}</td>
+							      <td>${movimiento.cantidad}</td>
+							      <td>${movimiento.tipoOperacion}</td>
+							    </tr>
+						    </c:forEach>						    
+						  </tbody>						  
+						</table>					
+					</div>
+				</div>
+			</div>		
+			<div class="col-lg-3">
+				
+			</div>
+		</div>
 	</div>
 </body>
 </html>
