@@ -24,27 +24,37 @@
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item active"><a class="nav-link" href="#">Saldo</a></li>
 					<li class="nav-item active"><a class="nav-link" href="#">Movimientos</a></li>
-					<li class="nav-item active"><a class="nav-link" href="#">Cuenta</a></li>
+					<li class="nav-item active"><a class="nav-link" th:href="@{prueba}">Cuenta</a></li>
 				</ul>
 			</div>
 		</nav>
 	</header>
-	<div class="container" style="text-align:center;">
-	<div class="row">
-		<div class="col-lg-4">
-			<a th:href="@{/ingresar}"><img class="rounded-circle" src="/img/ingresar.png" width="140" height="140"></a>
-			<h2>Ingresar</h2>
-		</div>	
-		<div class="col-lg-4">
-			<a href="@{/retirar}"><img class="rounded-circle" src="/img/retirar.png" width="140" height="140"></a>
-			<h2>Retirar</h2>
-		</div>
-		<div class="col-lg-4">
-			<a href="@{/listado}"><img class="rounded-circle" src="/img/movimientos.png" width="140" height="140"></a>
-			<h2>Movimientos</h2>
-		</div>
-	</div>
-	</div>
+	<div class="container">
+							<table class="table col col-lg-12">
+								<thead>
+									<tr>
+										<th scope="col">Numero Cuenta</th>
+										<th scope="col">Nombre Titular</th>
+										<th scope="col">Saldo</th>
+										<th scope="col">Acciones</th>										
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="cuentasUsuario : ${cuentasUsuario}">
+										<td th:text="${cuentasUsuario.numCuenta}"></td>
+										<td th:text="${cuentasUsuario.nomBanco}"></td>
+										<td th:text="${cuentasUsuario.saldo}"></td>	
+										<td><a
+											th:href="@{deletePersonas(idpersonas=${persona.idpersonas})}">Ingresar</a>
+											<a
+											th:href="@{deletePersonas(idpersonas=${persona.idpersonas})}">Retirar</a>
+											<button type="submit" class="btn btn-primary">Borrar</button>
+										</td>				
+									</tr>
+
+								</tbody>
+							</table>
+							</div>
 </body>
 </html>
 

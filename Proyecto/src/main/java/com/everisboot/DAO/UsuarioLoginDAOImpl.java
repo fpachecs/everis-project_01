@@ -8,5 +8,4 @@ import com.everisboot.models.UsuarioLogin;
 
 public interface UsuarioLoginDAOImpl extends CrudRepository<UsuarioLogin, Integer> {
 	
-	
 }

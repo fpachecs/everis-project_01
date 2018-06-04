@@ -71,17 +71,19 @@ public class Controler {
 		String user=request.getParameter("inputEmail");
 		String pass=request.getParameter("inputPassword");
 		@SuppressWarnings("unused")
-		UsuarioLogin usuario = null;
+		UsuarioLogin usuarioLogin = null;
 		try {
-			usuario = loginService.login(user, pass);
+			usuarioLogin = loginService.login(user, pass);
 		} catch (ExceptionApp e) {
 			ModelAndView model=new ModelAndView("index");
 			model.addObject("descripcion", e.getMsg());
 			model.addObject("titulo", e.getTitulo());
-			System.out.println(e.getMsg());
 			return model;
 		}
-		ModelAndView model = new ModelAndView("principal");		
+		Usuario usuario = new Usuario();
+		usuario=usuarioService.getUsuario(usuarioLogin.getIdUser());		
+		ModelAndView model = new ModelAndView("principal");
+		model.addObject("usuario", usuario);
 		return model;
 	}
 	
