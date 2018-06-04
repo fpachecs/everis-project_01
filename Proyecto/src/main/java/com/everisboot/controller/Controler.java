@@ -90,7 +90,7 @@ public class Controler {
 	@RequestMapping(value = "/listadodecuenta", method = RequestMethod.GET)
 	public ModelAndView listadodecuenta(HttpServletRequest request) {		
 		int usuarioId = Integer.parseInt(request.getParameter("idUsuario"));
-		System.out.println(usuarioId);		
+		//int usuarioId = 1;
 		List<Cuenta> cuenta = cuentaService.getCuentaByUser(usuarioId);		
 		ModelAndView model = new ModelAndView("cuentas");
 		model.addObject("cuentasUsuario", cuenta);
