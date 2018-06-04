@@ -3,6 +3,7 @@ package com.everisboot.models;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,12 +16,17 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 public class Movimiento implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	public int id;
-	public int idCuenta;
-	public LocalDateTime fechaOperacion;
-	public double cantidad;
-	public String tipoOperacion;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	private int id;
+	@Column(name="idcuenta")
+	private int idCuenta;
+	@Column(name="fechaoperacion")
+	private LocalDateTime fechaOperacion;
+	@Column(name="cantidad")
+	private double cantidad;
+	@Column(name="tipooperacion")
+	private String tipoOperacion;
 	
 	public Movimiento() {
 		super();

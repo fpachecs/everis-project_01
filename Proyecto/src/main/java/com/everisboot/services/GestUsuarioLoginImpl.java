@@ -27,7 +27,7 @@ class GestUsuarioLoginImpl implements GestUsuarioLogin{
 	}
 	
 	@Override
-	public void saveLogin(UsuarioLogin log,int id,String user, String password) {
+	public void saveLogin(UsuarioLogin log) {
 		implLogin.save(log);
 
 	}

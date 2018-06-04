@@ -16,15 +16,15 @@ public class UsuarioLogin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name="id")
-	public int id;
+	private int id;
 	@Column(name="user")
-	public String user;
+	private String user;
 	@Column(name="pass")
-	public String pass;
+	private String pass;
 	@Column(name="iduser")
-	public int idUser;
+	private int idUser;
 	@Column(name="ultimoacceso")
-	public LocalDateTime ultimoAcceso;
+	private LocalDateTime ultimoAcceso;
 	
 	public UsuarioLogin() {
 		super();

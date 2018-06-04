@@ -1,6 +1,6 @@
 package com.everisboot.controller;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -95,6 +95,35 @@ public class Controler {
 		ModelAndView model = new ModelAndView("cuentas");
 		model.addObject("cuentasUsuario", cuenta);
 		return model;
+	}
+	
+	@RequestMapping(value = "/registro", method = RequestMethod.POST)
+	public ModelAndView registro(HttpServletRequest request) {		
+		UsuarioLogin usuarioLogin=new UsuarioLogin();
+		Usuario usuario=new Usuario();
+		usuario.setId(0);
+		usuario.setNombre(request.getParameter("nombre"));
+		usuario.setApellido(request.getParameter("apellido"));
+		usuario.setDni(request.getParameter("dni"));	
+		usuarioService.saveUsuario(usuario);
+		usuarioLogin.setId(0);
+		usuarioLogin.setIdUser(usuario.getId());
+		usuarioLogin.setUser(request.getParameter("usuario"));
+		usuarioLogin.setPass(request.getParameter("pass"));
+		usuarioLogin.setUltimoAcceso(LocalDateTime.now());
+		loginService.saveLogin(usuarioLogin);
+		ModelAndView model= new ModelAndView("index");
+		return model;
+		
+		
+	}
+	
+	@RequestMapping(value = "/iraregistro")
+	public ModelAndView iraregistro() {		
+		ModelAndView model= new ModelAndView("registro");
+		return model;
+		
+		
 	}	
 
 }

@@ -17,14 +17,16 @@
 									<tr>
 										<th scope="col">Numero Cuenta</th>
 										<th scope="col">Nombre Titular</th>
-										<th scope="col">Saldo</th>										
+										<th scope="col">Saldo</th>
+										<th scope="col">Acciones</th>										
 									</tr>
 								</thead>
 								<tbody>
 									<tr th:each="cuentasUsuario : ${cuentasUsuario}">
 										<td th:text="${cuentasUsuario.numCuenta}"></td>
 										<td th:text="${cuentasUsuario.nomBanco}"></td>
-										<td th:text="${cuentasUsuario.saldo}"></td>					
+										<td th:text="${cuentasUsuario.saldo}"></td>
+										<td> <a th:href="@{eliminarCuenta(idCuenta=${cuentasUsuario.id})}">Borrar cuenta</a></td>					
 									</tr>
 
 								</tbody>

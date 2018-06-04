@@ -15,18 +15,18 @@ class GestUsuarioImpl implements GestUsuario {
 		return implUsuario.findAll();
 	}
 	@Override
-	public void saveUsuario(Usuario usur,int id,String nombre, String apellido, int dni) {
+	public void saveUsuario(Usuario usur) {
 		implUsuario.save(usur);
 	}
 	@Override
-	public Usuario getUsuario(int idUsuario){
+	public Usuario getUsuario(Integer idUsuario){
 		Usuario result=null;
 		if(implUsuario.findById(idUsuario).isPresent()) {
 			result=implUsuario.findById(idUsuario).get();
 		}				
 		return result;
 	}
-	public void deleteUsuario(int id) {
+	public void deleteUsuario(Integer id) {
 		implUsuario.deleteById(id);
 	}
 

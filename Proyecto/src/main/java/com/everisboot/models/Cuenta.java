@@ -19,17 +19,17 @@ public class Cuenta implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Id
 	@Column(name="id")
-	public int id;
+	private int id;
 	@Column(name="iduser")
-	public int idUser;
+	private int idUser;
 	@Column(name="numcuenta")
-	public String numCuenta;
+	private String numCuenta;
 	@Column(name="nombanco")
-	public String nomBanco;
+	private String nomBanco;
 	@Column(name="saldo")
-	public double saldo;
+	private double saldo;
 	@Column(name="fechadealta")
-	public LocalDateTime fechaDeAlta;
+	private LocalDateTime fechaDeAlta;
 	
 	public Cuenta() {
 		super();

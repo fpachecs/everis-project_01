@@ -23,22 +23,9 @@
 			<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required autofocus name="inputPassword">
 			<label for="inputPassword">Contraseña</label> 		
 		</div>
-		<button class="btn btn-lg btn-secondary btn-block" type="submit" data-toggle="modal" data-target="#miModal">Login</button>		
+		<button class="btn btn-lg btn-secondary btn-block" type="submit">Entrar</button>	
+		<a class="btn btn-lg btn-secondary btn-block" th:href="@{iraregistro}">Registro</a>			
 	</form>
-<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel" th:text=${titulo}></h4>
-      </div>
-      <div class="modal-body">
-        <p th:text=${descripcion}></p>
-      </div>
-    </div>
-  </div>
-</div>
+
 </body>
 </html>

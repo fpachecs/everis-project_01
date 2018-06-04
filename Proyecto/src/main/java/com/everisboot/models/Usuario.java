@@ -1,39 +1,47 @@
 package com.everisboot.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.everisboot.models.cfg.EntityCore;
+
 @Entity
 @Table(name = "usuario")
 
-public class Usuario {
+public class Usuario implements EntityCore<Integer> {
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	public int id;
-	public String nombre;
-	public String apellido;
-	public String dni;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	private Integer id;
+	@Column(name="nombre")
+	private String nombre;
+	@Column(name="apellido")
+	private String apellido;
+	@Column(name="dni")
+	private String dni;
 	
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(int id, String nombre, String apellido, String dni) {
+	public Usuario(Integer id, String nombre, String apellido, String dni) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
 	}
-
-	public int getId() {
+	@Override
+	public Integer getId() {
 		return id;
 	}
-
-	public void setId(int id) {
+	@Override
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
