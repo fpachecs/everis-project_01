@@ -33,7 +33,7 @@ class GestMovimientosImpl implements GestMovimientos{
 	}
 
 	@Override
-	public List<Movimiento> dameMovimientos(int numCuenta) {
+	public List<Movimiento> dameMovimientos(Integer numCuenta) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -42,15 +42,15 @@ class GestMovimientosImpl implements GestMovimientos{
 		return implMov.findAll();
 	}
 	
-	public void saveMovimiento(Movimiento mov,int idmovimiento,int numerocuenta, Date fecha,int cantidad,String operacion) {
+	public void saveMovimiento(Movimiento mov,Integer idmovimiento,Integer numerocuenta, Date fecha,Integer cantidad,String operacion) {
 		//Por hacer
 	}
 	
-	public Optional<Movimiento> getMovimiento(int numerocuenta){
+	public Optional<Movimiento> getMovimiento(Integer numerocuenta){
 		return implMov.findById(numerocuenta);
 	}
 	
-	public void deleteMovimiento(int idmovimiento) {
+	public void deleteMovimiento(Integer idmovimiento) {
 		implMov.deleteById(idmovimiento);
 	}
 	

@@ -2,12 +2,16 @@ package com.everisboot.models;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,9 +23,9 @@ public class Cuenta implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Id
 	@Column(name="id")
-	private int id;
+	private Integer id;
 	@Column(name="iduser")
-	private int idUser;
+	private Integer idUser;
 	@Column(name="numcuenta")
 	private String numCuenta;
 	@Column(name="nombanco")
@@ -31,11 +35,16 @@ public class Cuenta implements Serializable {
 	@Column(name="fechadealta")
 	private LocalDateTime fechaDeAlta;
 	
+	@OneToMany(orphanRemoval = false, cascade = CascadeType.ALL)
+	@JoinColumn(name = "idCuenta", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+	private List<Movimiento> movimientos;
+
+	
 	public Cuenta() {
 		super();
 	}
 
-	public Cuenta(int id, int idUser, String numCuenta, String nomBanco, double saldo, LocalDateTime fechaDeAlta) {
+	public Cuenta(Integer id, Integer idUser, String numCuenta, String nomBanco, double saldo, LocalDateTime fechaDeAlta) {
 		super();
 		this.id = id;
 		this.idUser = idUser;
@@ -45,19 +54,19 @@ public class Cuenta implements Serializable {
 		this.fechaDeAlta = fechaDeAlta;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getIdUser() {
+	public Integer getIdUser() {
 		return idUser;
 	}
 
-	public void setIdUser(int idUser) {
+	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
 
@@ -91,6 +100,15 @@ public class Cuenta implements Serializable {
 
 	public void setFechaDeAlta(LocalDateTime fechaDeAlta) {
 		this.fechaDeAlta = fechaDeAlta;
+	}
+	
+
+	public List<Movimiento> getMovimientos() {
+		return movimientos;
+	}
+
+	public void setMovimientos(List<Movimiento> movimientos) {
+		this.movimientos = movimientos;
 	}
 
 	@Override

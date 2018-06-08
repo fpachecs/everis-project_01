@@ -10,8 +10,8 @@ public interface GestUsuarioLogin {
 	
 	public Iterable<UsuarioLogin> listLogin();
 	public void saveLogin(UsuarioLogin log);
-	public Optional<UsuarioLogin> getLogin(int id);
-	public void deleteLogin(int id);
+	public Optional<UsuarioLogin> getLogin(Integer id);
+	public void deleteLogin(Integer id);
 	public int devuelveId(UsuarioLogin user);
 	//public boolean verificarUsuario(String user, String password);
 	public boolean existeUsuario(String user);

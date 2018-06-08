@@ -16,13 +16,13 @@ public class UsuarioLogin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name="id")
-	private int id;
+	private Integer id;
 	@Column(name="user")
 	private String user;
 	@Column(name="pass")
 	private String pass;
 	@Column(name="iduser")
-	private int idUser;
+	private Integer idUser;
 	@Column(name="ultimoacceso")
 	private LocalDateTime ultimoAcceso;
 	
@@ -30,7 +30,7 @@ public class UsuarioLogin {
 		super();
 	}
 
-	public UsuarioLogin(int id, String user, String pass, int idUser, LocalDateTime ultimoAcceso) {
+	public UsuarioLogin(Integer id, String user, String pass, Integer idUser, LocalDateTime ultimoAcceso) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -39,11 +39,11 @@ public class UsuarioLogin {
 		this.ultimoAcceso = ultimoAcceso;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -63,11 +63,11 @@ public class UsuarioLogin {
 		this.pass = pass;
 	}
 
-	public int getIdUser() {
+	public Integer getIdUser() {
 		return idUser;
 	}
 
-	public void setIdUser(int idUser) {
+	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
 

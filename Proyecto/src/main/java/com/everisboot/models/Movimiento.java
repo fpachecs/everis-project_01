@@ -18,9 +18,9 @@ public class Movimiento implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private Integer id;
 	@Column(name="idcuenta")
-	private int idCuenta;
+	private Integer idCuenta;
 	@Column(name="fechaoperacion")
 	private LocalDateTime fechaOperacion;
 	@Column(name="cantidad")
@@ -32,7 +32,7 @@ public class Movimiento implements Serializable {
 		super();
 	}
 
-	public Movimiento(int id, int idCuenta, LocalDateTime fechaOperacion, double cantidad, String tipoOperacion) {
+	public Movimiento(Integer id, Integer idCuenta, LocalDateTime fechaOperacion, double cantidad, String tipoOperacion) {
 		super();
 		this.id = id;
 		this.idCuenta = idCuenta;
@@ -41,19 +41,19 @@ public class Movimiento implements Serializable {
 		this.tipoOperacion = tipoOperacion;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getIdCuenta() {
+	public Integer getIdCuenta() {
 		return idCuenta;
 	}
 
-	public void setIdCuenta(int idCuenta) {
+	public void setIdCuenta(Integer idCuenta) {
 		this.idCuenta = idCuenta;
 	}
 

@@ -6,12 +6,12 @@ import com.everisboot.models.Cuenta;
 
 public interface GestCuentas {
 	
-	Cuenta autenticar(int numeroCuenta);
-	boolean actualizaSaldo(double cantidad, int numeroCuenta);
+	Cuenta autenticar(Integer numeroCuenta);
+	boolean actualizaSaldo(double cantidad, Integer numeroCuenta);
 	public Iterable<Cuenta> listCuentas();
-	public void saveCuentas(Cuenta cuent,int numerocuenta,String nombrecliente, int saldo);
-	public Cuenta getCuenta(int idCuenta);
-	public void deleteCuenta(int numerocuenta);
-	public List<Cuenta> getCuentaByUser(int idUser);
+	public void saveCuentas(Cuenta cuent,Integer numerocuenta,String nombrecliente, Integer saldo);
+	public Cuenta getCuenta(Integer idCuenta);
+	public void deleteCuenta(Integer numerocuenta);
+	public List<Cuenta> getCuentaByUser(Integer idUser);
 	
 }

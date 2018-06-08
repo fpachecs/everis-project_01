@@ -1,10 +1,16 @@
 package com.everisboot.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.everisboot.models.cfg.EntityCore;
@@ -16,15 +22,23 @@ public class Usuario implements EntityCore<Integer> {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private Integer id;
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	private String nombre;
-	@Column(name="apellido")
+	@Column(name = "apellido")
 	private String apellido;
-	@Column(name="dni")
+	@Column(name = "dni")
 	private String dni;
-	
+
+	@OneToOne(orphanRemoval = false, cascade = CascadeType.ALL)
+	@JoinColumn(name = "idUser", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+	private UsuarioLogin usuarioLogin;
+
+	@OneToMany(orphanRemoval = false, cascade = CascadeType.ALL)
+	@JoinColumn(name = "idUser", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+	private List<Cuenta> cuentas;
+
 	public Usuario() {
 		super();
 	}
@@ -36,10 +50,12 @@ public class Usuario implements EntityCore<Integer> {
 		this.apellido = apellido;
 		this.dni = dni;
 	}
+
 	@Override
 	public Integer getId() {
 		return id;
 	}
+
 	@Override
 	public void setId(Integer id) {
 		this.id = id;
@@ -68,12 +84,28 @@ public class Usuario implements EntityCore<Integer> {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+	
+	
+
+	public UsuarioLogin getUsuarioLogin() {
+		return usuarioLogin;
+	}
+
+	public void setUsuarioLogin(UsuarioLogin usuarioLogin) {
+		this.usuarioLogin = usuarioLogin;
+	}
+
+	public List<Cuenta> getCuentas() {
+		return cuentas;
+	}
+
+	public void setCuentas(List<Cuenta> cuentas) {
+		this.cuentas = cuentas;
+	}
 
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + "]";
 	}
-	
-	
 
 }

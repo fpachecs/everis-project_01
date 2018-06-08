@@ -32,11 +32,11 @@ class GestUsuarioLoginImpl implements GestUsuarioLogin{
 
 	}
 	
-	public Optional<UsuarioLogin> getLogin(int id){
+	public Optional<UsuarioLogin> getLogin(Integer id){
 		return implLogin.findById(id);
 	}
 	
-	public void deleteLogin(int id){
+	public void deleteLogin(Integer id){
 		implLogin.deleteById(id);
 
 	}

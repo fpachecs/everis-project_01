@@ -20,13 +20,13 @@ class GestCuentasImpl implements GestCuentas{
     }
 
 	@Override
-	public Cuenta autenticar(int numeroCuenta) {
+	public Cuenta autenticar(Integer numeroCuenta) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean actualizaSaldo(double cantidad, int numeroCuenta) {
+	public boolean actualizaSaldo(double cantidad, Integer numeroCuenta) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -36,12 +36,12 @@ class GestCuentasImpl implements GestCuentas{
 	}
 	
 	@Override
-	public void saveCuentas(Cuenta cuent,int numerocuenta,String nombrecliente, int saldo) {
+	public void saveCuentas(Cuenta cuent,Integer numerocuenta,String nombrecliente, Integer saldo) {
 		implCuenta.save(cuent);
 
 	}
 	@Override
-	public Cuenta getCuenta(int idCuenta){
+	public Cuenta getCuenta(Integer idCuenta){
 		Cuenta result=null;
 		if(implCuenta.findById(idCuenta).isPresent()) {
 			result=implCuenta.findById(idCuenta).get();
@@ -49,7 +49,7 @@ class GestCuentasImpl implements GestCuentas{
 		return result;
 	}
 	
-	public List<Cuenta> getCuentaByUser(int idUser) {
+	public List<Cuenta> getCuentaByUser(Integer idUser) {
 		List<Cuenta> lista = new ArrayList<>();
 		Iterable<Cuenta> todas = listCuentas();
 		for (Cuenta cuenta : todas) {
@@ -60,7 +60,7 @@ class GestCuentasImpl implements GestCuentas{
 	}
 	
 		
-	public void deleteCuenta(int numerocuenta){
+	public void deleteCuenta(Integer numerocuenta){
 		implCuenta.deleteById(numerocuenta);
 
 	}

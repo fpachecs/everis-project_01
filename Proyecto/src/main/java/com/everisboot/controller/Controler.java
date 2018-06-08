@@ -89,8 +89,8 @@ public class Controler {
 	
 	@RequestMapping(value = "/listadodecuenta", method = RequestMethod.GET)
 	public ModelAndView listadodecuenta(HttpServletRequest request) {		
-		int usuarioId = Integer.parseInt(request.getParameter("idUsuario"));
-		//int usuarioId = 1;
+		Integer usuarioId = Integer.parseInt(request.getParameter("idUsuario"));
+		//Integer usuarioId = 1;
 		List<Cuenta> cuenta = cuentaService.getCuentaByUser(usuarioId);		
 		ModelAndView model = new ModelAndView("cuentas");
 		model.addObject("cuentasUsuario", cuenta);
@@ -122,8 +122,6 @@ public class Controler {
 	public ModelAndView iraregistro() {		
 		ModelAndView model= new ModelAndView("registro");
 		return model;
-		
-		
 	}	
 
 }
