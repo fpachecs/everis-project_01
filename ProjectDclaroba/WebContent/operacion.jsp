@@ -24,7 +24,7 @@
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${Nombre} ${Apellido}</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown01" id="despegable">
 			              <a class="dropdown-item" href="#">Perfil</a>
-			              <a class="dropdown-item" href="#">Movimientos</a>
+			              <a class="dropdown-item" href="Controller?op=movimientos">Movimientos</a>
 			              <a class="dropdown-item" href="operacion.jsp">Operaciones</a>
 			              <a class="dropdown-item" href="#">Salir</a>
 		            </div>

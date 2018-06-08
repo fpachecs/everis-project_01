@@ -78,26 +78,15 @@ public class MovimientosDaoImp implements MovimientosDao{
 	}
 	@Override
 	public List<Movimiento> obtenerMovimientosCuentaPag(int idCuenta, int paginaActual, int registroXPag) {
-		int inicio = registroXPag * paginaActual + 1;
-		int fin = registroXPag * paginaActual + registroXPag;
-		String sql = "SELECT * FROM movimiento WHERE idCuenta = " + idCuenta + " AND id BETWEEN " + inicio + " AND " + fin;
-		List<Movimiento> movimientos = new ArrayList<Movimiento>();
-		try (Connection cn = ds.getConnection();) {
-			PreparedStatement ps = cn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				Movimiento mv = new Movimiento(
-						rs.getInt("id"),
-						rs.getInt("idCuenta"), 
-						rs.getTimestamp("fechaOperacion").toLocalDateTime(),
-						rs.getBigDecimal("cantidad"), 
-						rs.getString("tipoOperacion"));
-				movimientos.add(mv);				
-			}
-			return movimientos;			
-		}catch (SQLException ex) {
-			ex.printStackTrace();
+		int inicio = registroXPag * paginaActual + 1 - registroXPag;
+		int fin = registroXPag * paginaActual;		
+		List<Movimiento> movimientos = this.obtenerMovimientosCuenta(idCuenta);
+		List<Movimiento> movimientosfiltro = new ArrayList<Movimiento>();
+		for (int i = 0; i < movimientos.size(); i++) {
+			if (i>=inicio && i<=fin) {
+				movimientosfiltro.add(movimientos.get(i)); 
+			}			
 		}
-		return null;
+		return movimientosfiltro;
 	}
 }
