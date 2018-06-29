@@ -3,12 +3,18 @@ package com.everisboot.models;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "movimiento")
@@ -27,6 +33,11 @@ public class Movimiento implements Serializable {
 	private double cantidad;
 	@Column(name="tipooperacion")
 	private String tipoOperacion;
+	
+	@OneToOne(orphanRemoval = false, cascade = CascadeType.ALL)
+	@NotFound(action = NotFoundAction.IGNORE)
+	@JoinColumn(name = "idcuenta", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+	private Cuenta cuenta;
 	
 	public Movimiento() {
 		super();

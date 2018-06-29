@@ -2,17 +2,18 @@ package com.everisboot.models;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.mapping.List;
 
 @Entity
 @Table(name = "cuenta")
@@ -34,10 +35,12 @@ public class Cuenta implements Serializable {
 	private double saldo;
 	@Column(name="fechadealta")
 	private LocalDateTime fechaDeAlta;
+
 	
-	@OneToMany(orphanRemoval = false, cascade = CascadeType.ALL)
-	@JoinColumn(name = "idCuenta", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
-	private List<Movimiento> movimientos;
+	
+	/*OneToMany(orphanRemoval = false, cascade = CascadeType.ALL)
+	@JoinColumn(name = "idcuenta", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+	private List<Movimiento> movimientos;*/
 
 	
 	public Cuenta() {
@@ -103,13 +106,13 @@ public class Cuenta implements Serializable {
 	}
 	
 
-	public List<Movimiento> getMovimientos() {
+	/*public List<Movimiento> getMovimientos() {
 		return movimientos;
 	}
 
 	public void setMovimientos(List<Movimiento> movimientos) {
 		this.movimientos = movimientos;
-	}
+	}*/
 
 	@Override
 	public String toString() {

@@ -16,5 +16,5 @@ public interface GestUsuarioLogin {
 	//public boolean verificarUsuario(String user, String password);
 	public boolean existeUsuario(String user);
 	public boolean contraseñaCorrecta(String pass);
-	public UsuarioLogin login(String user, String pass) throws ExceptionApp;
+	public UsuarioLogin login(String user) throws ExceptionApp;
 }

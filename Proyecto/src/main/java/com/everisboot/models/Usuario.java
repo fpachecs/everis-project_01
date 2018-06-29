@@ -5,11 +5,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -30,14 +30,16 @@ public class Usuario implements EntityCore<Integer> {
 	private String apellido;
 	@Column(name = "dni")
 	private String dni;
+	
+	
 
-	@OneToOne(orphanRemoval = false, cascade = CascadeType.ALL)
-	@JoinColumn(name = "idUser", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+	/*@OneToOne(orphanRemoval = false, cascade = CascadeType.ALL)
+	@JoinColumn(name = "iduser", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
 	private UsuarioLogin usuarioLogin;
 
 	@OneToMany(orphanRemoval = false, cascade = CascadeType.ALL)
-	@JoinColumn(name = "idUser", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
-	private List<Cuenta> cuentas;
+	@JoinColumn(name = "iduser", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+	private List<Cuenta> cuentas;*/
 
 	public Usuario() {
 		super();
@@ -83,24 +85,6 @@ public class Usuario implements EntityCore<Integer> {
 
 	public void setDni(String dni) {
 		this.dni = dni;
-	}
-	
-	
-
-	public UsuarioLogin getUsuarioLogin() {
-		return usuarioLogin;
-	}
-
-	public void setUsuarioLogin(UsuarioLogin usuarioLogin) {
-		this.usuarioLogin = usuarioLogin;
-	}
-
-	public List<Cuenta> getCuentas() {
-		return cuentas;
-	}
-
-	public void setCuentas(List<Cuenta> cuentas) {
-		this.cuentas = cuentas;
 	}
 
 	@Override

@@ -66,26 +66,24 @@ public class Controler {
 		return model;
 	}
 	
-	@RequestMapping(value= "/login" , method = RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request) {
-		String user=request.getParameter("inputEmail");
-		String pass=request.getParameter("inputPassword");
-		@SuppressWarnings("unused")
-		UsuarioLogin usuarioLogin = null;
-		try {
-			usuarioLogin = loginService.login(user, pass);
-		} catch (ExceptionApp e) {
-			ModelAndView model=new ModelAndView("index");
-			model.addObject("descripcion", e.getMsg());
-			model.addObject("titulo", e.getTitulo());
-			return model;
-		}
-		Usuario usuario = new Usuario();
-		usuario=usuarioService.getUsuario(usuarioLogin.getIdUser());		
-		ModelAndView model = new ModelAndView("principal");
-		model.addObject("usuario", usuario);
-		return model;
-	}
+//	@RequestMapping(value= "/login" , method = RequestMethod.POST)
+//	public ModelAndView login(HttpServletRequest request) {
+//		String user=request.getParameter("inputEmail");
+//		UsuarioLogin usuarioLogin = null;
+//		try {
+//			usuarioLogin = loginService.login(user);
+//		} catch (ExceptionApp e) {
+//			ModelAndView model=new ModelAndView("index");
+//			model.addObject("descripcion", e.getMsg());
+//			model.addObject("titulo", e.getTitulo());
+//			return model;
+//		}
+//		Usuario usuario = new Usuario();
+//		usuario=usuarioService.getUsuario(usuarioLogin.getIdUser());		
+//		ModelAndView model = new ModelAndView("principal");
+//		model.addObject("usuario", usuario);
+//		return model;
+//	}
 	
 	@RequestMapping(value = "/listadodecuenta", method = RequestMethod.GET)
 	public ModelAndView listadodecuenta(HttpServletRequest request) {		

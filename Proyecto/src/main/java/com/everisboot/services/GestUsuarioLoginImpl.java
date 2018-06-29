@@ -84,7 +84,7 @@ class GestUsuarioLoginImpl implements GestUsuarioLogin{
 		return iduser;
 	}	
 	
-	public UsuarioLogin login(String user, String pass) throws ExceptionApp {
+	public UsuarioLogin login(String user) throws ExceptionApp {
 		UsuarioLogin result = new UsuarioLogin();
 		Iterable<UsuarioLogin>	logeos = implLogin.findAll();
 		List<UsuarioLogin> lista = new ArrayList<>();
@@ -97,11 +97,11 @@ class GestUsuarioLoginImpl implements GestUsuarioLogin{
 			// Validar user
 			if (usuarioLogin != null && validateUser(usuarioLogin, user)) {
 				// Validar password
-				if  (usuarioLogin.getPass().equals(pass)) {
+//				if  (usuarioLogin.getPass().equals(pass)) {
 					result = usuarioLogin;
-				} else {
-					throw new ExceptionApp("Credenciales incorrectas","La contraseña es incorrecta.");
-				}
+//				} else {
+//					throw new ExceptionApp("Credenciales incorrectas","La contraseña es incorrecta.");
+//				}
 			} else {
 				throw new ExceptionApp("Usuario sin acceso","El usuario no se encuentra en nuestra base de datos.");
 			}
